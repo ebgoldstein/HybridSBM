@@ -9,7 +9,7 @@ Earth Surface Dynamics, 2, 67-82
 available online (open access): http://www.earth-surf-dynam.net/2/67/2014/esurf-2-67-2014.html
 
 SBM.m is the main script for running the model, all
-other functions and model subroutines are incorporated below.
+other functions and model subroutines are subordinate.
 
 The code saves the entire structure that houses the model data and assumes you have the parallel package for matlab.
 Some of the features of teh original code are not implemented
