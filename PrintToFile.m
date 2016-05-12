@@ -1,6 +1,6 @@
 function  PrintToFile(AREA,FrameNumber,SBVARS )
 %PrintToFile This function prints the SoB data to a file
-%  
+%
 %   This function clears all variables and saves the SoB variables, as a
 %   whole. I.e. it saves the entire structure that the SB file is made of.
 %   This may be untenable when the files get big, but it is worth a try
@@ -8,10 +8,8 @@ function  PrintToFile(AREA,FrameNumber,SBVARS )
 %   enabling a better comparison with the hybrid models.
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -25,4 +23,3 @@ eval(S)
 %this should probably write the forcing conditions
 
 end
-

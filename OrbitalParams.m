@@ -3,10 +3,8 @@ function [ OrbitalVel,OrbitalExcurs ] = OrbitalParams( Kdw,D,waveHeight,T )
 %   calculates maximum wave orbital velocity and wave orbital amplitude
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %With wave number (Kdw) we can get the wave parameters
@@ -18,4 +16,3 @@ OrbitalExcurs = (0.5*waveHeight)./sinh(Kdw.*D);
 
 
 end
-

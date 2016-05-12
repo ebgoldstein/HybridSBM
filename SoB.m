@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %This is a Matlab rewrite of the Sorted Bedform code, initially written in
-%'C' by Giovanni Coco and A. Brad Murray. 
+%'C' by Giovanni Coco and A. Brad Murray.
 %
 %"It is easier to write a new code than to understand an old one"
 %-John von Neumann to Marston Morse, 1952
@@ -9,8 +9,8 @@
 %This is the main script to change when running the model, all
 %other functions and model subroutines are incorporated below.
 %
-%This code can save the entire structure that houses the model data. This 
-%will enable more detailed comparison between hybrid approaches and empirical 
+%This code can save the entire structure that houses the model data. This
+%will enable more detailed comparison between hybrid approaches and empirical
 %approaches.
 %
 %The Code assumes you have the parallel package for matlab.
@@ -20,10 +20,8 @@
 %Written by EBG 2/12
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 close all
@@ -47,7 +45,7 @@ ZMAX=100; %# of Cells in vertical dimension
 %Initial depth of the model domain in meters. 25*Cell Height must be
 %subtracted to have the effective water depth for models starting from IC.
 %This is because the model initializes the IC by filling the first 25
-%vertical cells up with sediment. 
+%vertical cells up with sediment.
 IDEPTH=11.5;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %These variables set the domain composition and the deposition/erosion rate
@@ -64,18 +62,18 @@ AggC=0.0;
 
 %Parameterize the Sediment.
 %@ Wrightsville, C=2mm (0.002m),F=0.2mm (0.0002m)
-% % 
+% %
 dfine=0.0002;              % diameter of fine sed, in m (0.15mm)
 dcoarse=0.0005;              % diameter of coarse sed, in m (1mm)
 Wf=0.02;                    % fall velocity of fine sediment
 Wc=0.07;                    % fall velocity of coarse sediment
 
-   
-% dfine=0.0002;              % diameter of fine sed, in m 
+
+% dfine=0.0002;              % diameter of fine sed, in m
 % dcoarse=0.0008;              % diameter of coarse sed, in m
-% 
+%
 % %%Find Fall velocity
-% Wf = SettlingV(dfine);    
+% Wf = SettlingV(dfine);
 % Wc = SettlingV(dcoarse);
 
 rhoS=2600;                  % sediment density, kg/m3
@@ -83,7 +81,7 @@ rhoS=2600;                  % sediment density, kg/m3
 %These variables set the forcing parameters
 
 %CURRENTS
-VMEAN=0.1414; 
+VMEAN=0.1414;
 %VMEAN=0.2;         %~10 cm.s (gutierrez et al 2005; storm data)
 %Mean current velocity in the x and y direction reported in m/s. This is
 %the exact current velocity if VSIGMA=0. The mean velocity in the diagonal
@@ -129,12 +127,12 @@ FORCING_DURATION=86400;    %86400 s = 24hrs. after FORCING_DURATION has passed, 
 
 StartSavingAt=0; %units = FORCING_DURATIONSs*/
 FrameSpacing=1; % units = FORCING_DURATIONs (presently 1 day); wave frequency ~= 864/day                    */
-maxRunTime = 100; %measured in units of FORCING_DURATIONs; */ presently, 1 FORCING_DURATION = 1 day. */     
+maxRunTime = 100; %measured in units of FORCING_DURATIONs; */ presently, 1 FORCING_DURATION = 1 day. */
 
 AdjustTime=10;  %Number of iterations that sediment is transported across
 %the BC; used because of changes in direction?
 
-timeStep = 400;   %Time step of model in seconds 
+timeStep = 400;   %Time step of model in seconds
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Constants (Maybe export some of these to the functions?
@@ -188,17 +186,17 @@ waveHeight = WMEAN;
 
 %Begin running the model
 for RunTime=FrameNumber:maxRunTime;
-    
+
     %Update Current Direction and velocity
     %[currentVelocityX,currentVelocityY] = ChangeCurrent(currentVelocityX,currentVelocityY,VMEAN,VSIGMA );
-    
+
     %Update Wave Heights depending on the presence of storms
     if AreThereStorms== 'n'
         [waveHeightold,waveHeight] = ChangeWaves(waveHeight,WMEAN,WSIGMA);
     elseif AreThereStorms== 'y'
         [waveHeightold,waveHeight,BigWaveCount,STCount] = ChangeWavesS(waveHeight,WMEAN,WSIGMA,STORMWAVES,BigWaveCount,STCount,BigWaveInt,STLength);
     end
-    
+
     %Now the main loop needs to do its thing!!
 
     for ii=timeStep:timeStep:FORCING_DURATION;
@@ -208,7 +206,7 @@ for RunTime=FrameNumber:maxRunTime;
         [totalElapsedTime] = UpdateRunTimeClock( totalElapsedTime,timeStep);
         ii=ii+timeStep;
     end
-    
+
     PrintToFile(AREA,FrameNumber,SBVARS);
     FrameNumber  %To print the frame number that is saved
     FrameNumber =FrameNumber+1;

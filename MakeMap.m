@@ -1,7 +1,7 @@
 %This code was developed to display data generated from the MATLAB version
 %of the Sorted Bedform Code, specifically data from 'AREA.000X' files
 
-%This code is used to generate movies of map view concentrations in the transect from 
+%This code is used to generate movies of map view concentrations in the transect from
 %bottom left to top right corner of the map view display, a la the Murray
 % and Thieler as well as the Coco et al. papers. The movies are entitled
 % 'Map X' where X is a number refering to II (the loop iteration
@@ -9,29 +9,27 @@
 % in quicktime 7 or real player. They can be stitched together in one of
 % these programs tomake movies for the entire model run.
 
-%The current configuration of this code runs from raw 'save.000' 
-%files, not a previously saved set of variables, and will generate a movie 
+%The current configuration of this code runs from raw 'save.000'
+%files, not a previously saved set of variables, and will generate a movie
 %file. This code had no size
 %restriction, but the student version of matlab can only handle an
-%multidimensional array ('S' in this case)at the size set, so the process 
+%multidimensional array ('S' in this case)at the size set, so the process
 %will loop through all of the data, no matter how many outputs
 %are saved, in incrememnts of 100 saved files. So, for instance if you have
-%2000 saved output files to 
-%process, the 'saved' variable should be set to 100 (the maximum allowed) 
+%2000 saved output files to
+%process, the 'saved' variable should be set to 100 (the maximum allowed)
 %and II should be set from 1:20 (20 loops, each 100 output files long is
-%2000 total output files). 
+%2000 total output files).
 
 %'II' and 'Saved' are the only two variables that require manual adjusting
 %Coding by EBG 2/2011
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
+
 
 
 close all
@@ -62,11 +60,11 @@ saved=100;
             end
         end
     end
-    
+
     clear start
     clear i
     clear k
-    
+
    s=S;
 
 for j=1:saved;
@@ -74,7 +72,7 @@ for j=1:saved;
     pcolor(p)
     xlabel('Position (m)')
     ylabel('Position (m)')
-    axis([1 100 1 100]) 
+    axis([1 100 1 100])
     set(gca,'XTickLabel',{'100','200','300','400','500'})
     set(gca,'YTickLabel',{'50','100','150','200','250','300','350','400','450','500'})
     colorbar

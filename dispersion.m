@@ -4,10 +4,8 @@ function [ Kdw ] = dispersion( XMAX,YMAX,SIGMA,D )
 %   Detailed explanation goes here
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 g=9.8;                      %gravity in m/s^2
@@ -49,4 +47,3 @@ Kdw=KDW;
 % end
 
 end
-

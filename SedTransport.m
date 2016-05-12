@@ -3,10 +3,8 @@ function [AREA] = SedTransport(AREA,currentVelocityX,currentVelocityY,waveHeight
 %   This function transports BOTH fractions of the sediment
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -121,7 +119,7 @@ FrictionParam=exp((5.213*((nikuk./OrbitalExcurs).^0.194))-5.977);
 %EBG deleted Shields ripple and replaced all occurences with
 %ShieldsParam because d50 and d50ripple are identical (see note above)
 %SheildsParam= tao/rho((rhos/rho)-1)gd50 (e.g. Nielsen 1986)
-%tao=.5*rho*FrictionParam*u1m^2 (f and D p24) 
+%tao=.5*rho*FrictionParam*u1m^2 (f and D p24)
 
 ShieldsParam = (FrictionParam./(3.3*g*d50) ).*((SIGMA*OrbitalExcurs).^2);
 AREA.ShieldsParam=ShieldsParam;
@@ -138,7 +136,7 @@ AREA.RippleLength=RippleLength;
 AREA.RippleAspectRatio=RippleAspectRatio;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This sediment diffusivity is from Nielsen 1992 with del increased 
+% This sediment diffusivity is from Nielsen 1992 with del increased
 % as per Thorne et al 2002 and Thorne et al 2009;
 % Furthermore Thorne et al 2009 mentioned that the Nielsen diffusivity expression may be
 %an underestimate (factor of 2). this allows use to double it (ThorneC=2 is doubling)..
@@ -159,7 +157,7 @@ AREA.auxexp2C=auxexp2C;
 
 %Suspended sediment reference concentration, predicted by GP..
 
-%gp CREF in g/L 
+%gp CREF in g/L
 CrefFgL=((0.328*OrbitalVel)/(0.0688+(1000*dfine))).^2;
 CrefCgL=((0.328*OrbitalVel)/(0.0688+(1000*dcoarse))).^2;
 
@@ -185,7 +183,7 @@ ustar=(karman*uMagnitude)./log(hustar./(zeta0));
 %From rearranged eqn 17 Coco et al 2007a
 vstar=(karman*vMagnitude)./log(hustar./(zeta0));
 
-%CALCULATE LOCAL EQUILIBRIUM Integrated SUSPENDED SEDIMENT 
+%CALCULATE LOCAL EQUILIBRIUM Integrated SUSPENDED SEDIMENT
 %Fine Sediment
 [ IntegratedConcy, IntegratedConcx,coeffcrit ] = IntegratedSSConcentration(XMAX,YMAX,CrefF,zeta0,RippleHeight,Wf,auxexp2,karman,hustar,ustar,vstar,uMagnitude,vMagnitude);
 %Coarse Sediment
@@ -198,16 +196,16 @@ AREA.coeffcritC=coeffcritC;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
-%GC:Convert the concentraton profiles to immersed weight. 
+%GC:Convert the concentraton profiles to immersed weight.
 %ConvertToImmersedWt=(rhoS-rho)*g;
 %EBG note: I don't do this, instead i convert q2 parts from Imm weight to
 %volumetric flux... see notes above the qs2 equation (below)
 %Currently the qsx1 routines below is the intergrated ConC profile is in (m^2)/(s)
-%because it is the vertical integral of the each slice of the ss column, 
-%where each slice represents the product of the slice height (in m), the 
-%volumetric concentration (m^3/m^3), and the current velocity (in m/s). 
-%To get the volumetric seidment flux out of the cell (m^3/s), you take the 
-%integrated concentration and multiply by the cell width, which is done in 
+%because it is the vertical integral of the each slice of the ss column,
+%where each slice represents the product of the slice height (in m), the
+%volumetric concentration (m^3/m^3), and the current velocity (in m/s).
+%To get the volumetric seidment flux out of the cell (m^3/s), you take the
+%integrated concentration and multiply by the cell width, which is done in
 %the TOTAL (local) sed flux eqns below..
 %%%%%%%%%%%%%%%%%%%%
 
@@ -226,9 +224,9 @@ AREA.qsy1C=qsy1C;
 %Drag Coefficient; EQN 7 Coco et al 2007a. In the paper this eqn is
 %written incorrectly. this formulation follows one by soulsby 1997 i think.
 %EBG:EQN from the code:
-%CD=(karman./log(hustar./(zeta0))).^2; 
+%CD=(karman./log(hustar./(zeta0))).^2;
 %This is from Soulsby 1997 p55 (assumes log profile for entire water column).
-%In this formulation, because log profile is not present through the entire water 
+%In this formulation, because log profile is not present through the entire water
 %column,  beta might be replaced by (hustar./2*D)-log(hustar./2*D); this is
 %~3 in the case of hustar=2 and D ~20...
 beta=1;
@@ -262,7 +260,7 @@ AREA.bedslopeY=bedslopeY;
 %%%FINE SED
 qsx2=ImWttoVol*coeff *coeffcrit.* CD .* ((OrbitalVel).^5) .*bedslopeX* (1/(5*Wf));
 qsy2=ImWttoVol*coeff *coeffcrit.* CD .* ((OrbitalVel).^5) .*bedslopeY* (1/(5*Wf));
-        
+
 %%%COARSE SED
 qsx2C=ImWttoVol*coeffC *coeffcritC .* CD .* ((OrbitalVel).^5) .*bedslopeX * (1/(5*Wc));
 qsy2C=ImWttoVol*coeffC *coeffcritC .* CD .* ((OrbitalVel).^5) .* bedslopeY * (1/(5*Wc));
@@ -282,9 +280,9 @@ AREA.qsy2C=qsy2C;
 
 %All these flux terms are in volumetric sed flux (m^3/s)...
 
-%%%%EBG NOTE: when flux is very large, this routine presents a problem 
+%%%%EBG NOTE: when flux is very large, this routine presents a problem
 %because it can flux the same amount of material in both the X and Y direction,
-%essentially selling the same car twice... this is where the model stability 
+%essentially selling the same car twice... this is where the model stability
 %is compromised....
 
 %%%FINE SED
@@ -293,7 +291,7 @@ QLocalFineY = (1 - EffectivePercentCoarse) .* (qsy1 - qsy2);
 %%%COARSE SED
 QLocalCoarseX = (EffectivePercentCoarse) .* (qsx1C - qsx2C);
 QLocalCoarseY = (EffectivePercentCoarse) .* (qsy1C - qsy2C);
-        
+
 AREA.localFluxFineX=QLocalFineX;
 AREA.localFluxFineY=QLocalFineY;
 AREA.localFluxCoarseX=QLocalCoarseX;
@@ -303,8 +301,8 @@ AREA.localFluxCoarseY=QLocalCoarseY;
 %takes for sediment of a specific grain size to be advected
 %through a cell under the effect of the current vs the time for
 %sediment to settle:
-        
-%This is Tsettle in coco et al eqn4. 
+
+%This is Tsettle in coco et al eqn4.
 %Measure of concentration profile height,
 %'turbulence' or based on the diffusion ceofficient
 % vs the fall velocity of the size fraction.
@@ -348,13 +346,13 @@ percentDepositedC=min(percentDepositedC,1);
 AREA.percentDeposited=percentDeposited;
 AREA.percentDepositedC=percentDepositedC;
 
-%%%%THIS IS THE BIG LOOP that figures out equation 2 in coco et al 2007a. 
+%%%%THIS IS THE BIG LOOP that figures out equation 2 in coco et al 2007a.
 %figures out 'what is the excess sed?'
 [ AREA,excessSed,excessSedC] = Flux(AREA,uMagnitude,vMagnitude, beginX,incrementX,endX,beginY,incrementY,endY);
 %Determine the amount of fine and Coarse sediment to deposit.
-%EBG note: removed converted to volume step because everything is already 
+%EBG note: removed converted to volume step because everything is already
 %volumetric flux per unit width..just need to account for time step, cell
-%width, and packing ratio: 0.6 exists because this is the percentage of 
+%width, and packing ratio: 0.6 exists because this is the percentage of
 %sediment in a given unit volume (i.e. a packing ratio)
 
 FVA=percentDeposited.*excessSed*(CWIDTH*timeStep/0.6);
@@ -362,4 +360,3 @@ CVA=percentDepositedC.*excessSedC*(CWIDTH*timeStep/0.6);
 AREA.fineVolumeAdded = FVA;
 AREA.coarseVolumeAdded = CVA;
 end
-

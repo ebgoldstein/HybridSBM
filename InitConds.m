@@ -1,12 +1,10 @@
 function [AREA] = InitConds(APC,IDEPTH,SBVARS)
 %INITIAL CONDITIONS; Initializes domain for the SoB model
-%   This function initializes the domain for the SoB model 
+%   This function initializes the domain for the SoB model
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -15,39 +13,39 @@ YMAX=SBVARS.YMAX;
 ZMAX=SBVARS.ZMAX;
 CHEIGHT=SBVARS.CHEIGHT;
 %make IC from scratch
-        
+
     %Make SoB integer placeholders for the excess sed that comes out of the
     %boundaries, and eventually come in on the other boundary. (periodic
     %BCs)
     ALE=zeros(1,XMAX);
-    
+
     %Make SoB Matrix for the planview features
-    A=zeros(XMAX,YMAX);             
-    
-    
+    A=zeros(XMAX,YMAX);
+
+
     %Now make the Depth matrix that expresses that the depth of SoB field
     %is located at Z=25
     ADEPTH=IDEPTH;
-    
+
     %Now make the active layer matrix that expresses that the top surface
     %is located at Z=25
     ActiveLayerM=repmat(50,XMAX,YMAX);
-    
+
     %Make SoB array for 3D features
-    A3=zeros(XMAX,YMAX,ZMAX);         
-    A3(:,:,1:50)=(APC-0.1)+(.2*rand(100,100,50));    %fill the array up to 
+    A3=zeros(XMAX,YMAX,ZMAX);
+    A3(:,:,1:50)=(APC-0.1)+(.2*rand(100,100,50));    %fill the array up to
     %height of 25 cells with sediment that has coarseness values uniformly
     %distributed between APC and 2*APC.
-    
+
     %Now we must make the percent full array
     APFInitial=zeros(XMAX,YMAX,ZMAX);
     APFInitial(:,:,1:49)=ones(100,100,49);
     %make matrix expressing that the top surface is half full
-    APFInitial(:,:,50)=repmat(0.5,XMAX,YMAX); 
+    APFInitial(:,:,50)=repmat(0.5,XMAX,YMAX);
     PFAL=repmat(0.5,XMAX,YMAX);
-    
-    
-    
+
+
+
     %This is the main data structure with all of the variables above plus
     %all of the important 2D parameters.
     AREA=struct('localFluxFineX',A,...
@@ -87,6 +85,6 @@ CHEIGHT=SBVARS.CHEIGHT;
         'localFluxOutofIterFineY',ALE,...
         'excessOutofIterCoarseY',ALE,...
         'localFluxOutofIterCoarseY',ALE,...
-        'TotalAddedSediment',A);    
-    
+        'TotalAddedSediment',A);
+
 end

@@ -3,10 +3,8 @@ function [ timeSinceForcingUpdate] = UpdateForcingClock( timeSinceForcingUpdate,
 %   Detailed explanation goes here
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -17,5 +15,5 @@ else
     timeSinceForcingUpdate=timeSinceForcingUpdate+timeStep;
 end
 
-    
+
 end

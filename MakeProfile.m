@@ -25,10 +25,8 @@
 %Coding by EBG 2/2011
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -131,4 +129,3 @@ for jj=1:saved;
 end
 movie(MM)
 movie2avi(MM,['Profile'])
-

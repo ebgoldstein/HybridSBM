@@ -1,25 +1,23 @@
 function [ IntegratedConcy, IntegratedConcx,coeffcrit ] = IntegratedSSConcentration(XMAX,YMAX,Cref,zeta0,RippleHeight,W,AE,karman,hustar,ustar,vstar,uMagnitude,vMagnitude)
 %INTEGRATEDSSCONCENTRATION Outputs the integrated Susspended sediment
 %concentration above a vortex ripple
-%   
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
 %I can likely make this faster by figuring out a good way to do most of the
 %loops as matrix math. Such as making a matrix of height increments (from
-%z0 to the top of Conc profile, multiplying the entire matrix by step size, 
-%then element by element multiplying by current V, then summing over them 
-%to get integrated Conc.  
+%z0 to the top of Conc profile, multiplying the entire matrix by step size,
+%then element by element multiplying by current V, then summing over them
+%to get integrated Conc.
 %%%%%%%%%%%%%%%%%%%%
 
-%This Loop computes the 2nd term (integration term)%in eqn 5 coco et al 2007: 
-%the suspended sediment concentration profile, 
+%This Loop computes the 2nd term (integration term)%in eqn 5 coco et al 2007:
+%the suspended sediment concentration profile,
 %multiplied by the vertical velocity profile and dz.
 stepbl=0.01;       %This is dz, the vertical step length
 
@@ -46,7 +44,7 @@ coeffcrit=ones(XMAX,YMAX);
 
 
 
-%First fine sediment 
+%First fine sediment
 parfor i=1:XMAX
     for j=1:YMAX
         if Cref(i,j)>0.0
@@ -82,17 +80,16 @@ parfor i=1:XMAX
             %the critical shields, so no sediment motion. When this
             %coefficient=0 it shuts off the BL and SL out of the cell.
             qoblu(i,j)=0.0;
-            qoblv(i,j)=0.0; 
-            coeffcrit(i,j)=0; 
+            qoblv(i,j)=0.0;
+            coeffcrit(i,j)=0;
         end
     end
 end
 
 
 %This if the total integrated product.
-IntegratedConcx=qoblu;      
+IntegratedConcx=qoblu;
 IntegratedConcy=qoblv;
-            
+
 
 end
-

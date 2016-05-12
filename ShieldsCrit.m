@@ -3,10 +3,8 @@ function [ TaoC ] = ShieldsCrit(d)
     %Based off of soulsby 1997 eqn 77 p.106.
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -20,4 +18,3 @@ Dstar=d*((g*SSD/(nu^2))^(1/3));        %eqn 75
 TaoC=(.3/(1+(1.2*(Dstar)))+(0.55*(1-exp(-0.02*Dstar))));
 
 end
-

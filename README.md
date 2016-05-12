@@ -3,8 +3,8 @@ This is a Matlab rewrite of the Sorted Bedform code, initially written in
 machine learning based predictors (a 'hybrid' model).
 
 the model was used in the paper:
-Goldstein, E. B., G. Coco, A.B. Murray, and M.O. Green, (2014), 
-Data driven components in a model of inner shelf sorted bedforms: a new hybrid model, 
+Goldstein, E. B., G. Coco, A.B. Murray, and M.O. Green, (2014),
+Data driven components in a model of inner shelf sorted bedforms: a new hybrid model,
 Earth Surface Dynamics, 2, 67-82
 available online (open access): http://www.earth-surf-dynam.net/2/67/2014/esurf-2-67-2014.html
 
@@ -17,7 +17,5 @@ Some of the features of the original code are not implemented
 Written by EBG 2/12
 
 
-Copyright EBG: 
-Creative Commons 
-Attribution-NonCommercial-ShareAlike 
-3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
