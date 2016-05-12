@@ -15,7 +15,5 @@ The code saves the entire structure that houses the model data and assumes you h
 Some of the features of the original code are not implemented
 
 Written by EBG 2/12
-
-
-%The MIT License (MIT)
-%Copyright (c) 2016 Evan B. Goldstein
+The MIT License (MIT)
+Copyright (c) 2016 Evan B. Goldstein
