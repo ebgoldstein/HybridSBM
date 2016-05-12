@@ -6,10 +6,8 @@ function [ AREA ] = DoIterationDummy( AREA,currentVelocityX,currentVelocityY,wav
 %   ADJUST TO NEW DIRECTION FOR A FEW ITERATIONS FIRST
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 [AREA] = SedTransport(AREA,currentVelocityX,currentVelocityY,waveHeight,SBVARS );
