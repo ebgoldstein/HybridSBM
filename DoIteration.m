@@ -3,10 +3,8 @@ function [ AREA ] = DoIteration( AREA,currentVelocityX,currentVelocityY,waveHeig
 % and time adjustment routines.
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 [AREA] = SedTransport(AREA,currentVelocityX,currentVelocityY,waveHeight,SBVARS );
