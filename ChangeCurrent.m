@@ -2,10 +2,8 @@ function [currentVelocityX,currentVelocityY] = ChangeCurrent(currentVelocityX,cu
 %CHANGE CURRENT This function changes the current every forcing duration.
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
