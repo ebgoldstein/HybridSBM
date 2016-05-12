@@ -3,10 +3,8 @@ function [ bedslopeX,bedslopeY ] = FindBedSlope( beginX,incrementX,endX,beginY,i
 %   
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 for x = beginX:incrementX:endX;
