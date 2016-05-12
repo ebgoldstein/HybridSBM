@@ -3,10 +3,8 @@ function [WaveHeightold,WaveHeight] = ChangeWaves(WaveHeight,WMEAN,WSIGMA)
 %   Changes waves based on normal distribution
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     WaveHeightold=WaveHeight;
