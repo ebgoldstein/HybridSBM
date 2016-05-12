@@ -8,10 +8,8 @@ function [ AREA,excessSed,excessSedC] = Flux(AREA,uMagnitude,vMagnitude, beginX,
 %backward...
 %
 %
-%Copyright EBG: 
-%Creative Commons 
-%Attribution-NonCommercial-ShareAlike 
-%3.0 Unported
+%The MIT License (MIT)
+%Copyright (c) 2016 Evan B. Goldstein
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 percentDeposited=AREA.percentDeposited;
